@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\BookedClass;
 use App\Models\Classroom;
 use App\Models\Timetable;
+use App\Http\Requests\CreateClassRequest;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -22,7 +23,7 @@ class ClassController extends Controller
         return json_encode($classes);
     }
 
-    function postClass(Request $request){
+    function postClass(CreateClassRequest $request){
         // TODO: things to handle in the request: 
         // empty fields, formats string / datetimes, 
         // unexisting classroom 
