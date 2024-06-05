@@ -17,10 +17,10 @@ class ClassController extends Controller
         $week_end = $week_start->copy()->addDays(6)->format('Y-m-d 23:59:59');
         $week_start = $week_start->format('Y-m-d 00:00:00');
         
-        $classes = BookedClass::where('starts_at', '>=', $week_start)
-            ->where('ends_at', '>=', $week_end)
-            ->get();
-
+        $classes = BookedClass::join('classrooms', 'classes.classroom_id', 'classrooms.id')
+            ->where('starts_at', '>=', $week_start)
+            ->where('ends_at', '<=', $week_end)
+            ->get(['starts_at', 'ends_at', 'classrooms.name']);
         return response(json_encode($classes), 200);
     }
 
