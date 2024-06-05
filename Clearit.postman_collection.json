@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "b3ed6243-e475-475a-b8d0-06096a8f5646",
+		"name": "Clearit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1571711"
+	},
+	"item": [
+		{
+			"name": "classes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/api/classes",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"classes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create class",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"classroom_name\": \"Classroom A\",\n    \"starts_at\": \"2024-06-05 10:00:00\",\n    \"ends_at\": \"2024-06-05 11:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/api/classes/book",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"classes",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancel class",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"classroom_name\": \"Classroom A\",\n    \"starts_at\": \"2024-06-05 10:00:00\",\n    \"ends_at\": \"2024-06-05 11:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/api/classes/1/cancel",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"classes",
+						"1",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
