@@ -5,6 +5,7 @@ use App\Models\BookedClass;
 use App\Models\Classroom;
 use App\Models\Timetable;
 use App\Http\Requests\CreateClassRequest;
+use App\Http\Requests\DeleteClassRequest;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -20,7 +21,7 @@ class ClassController extends Controller
             ->where('ends_at', '>=', $week_end)
             ->get();
 
-        return json_encode($classes);
+        return response(json_encode($classes), 200);
     }
 
     function postClass(CreateClassRequest $request){
@@ -28,12 +29,10 @@ class ClassController extends Controller
         $data = $request->only('starts_at', 'ends_at');
         $data['classroom_id'] = $classroom->id;
         $class = BookedClass::create($data);
-        return json_encode($class);
+        return response(json_encode($class), 200);
     }
 
-    function deleteClass(Request $request, BookedClass $bookedClass){
-        // TODO: things to handle in the request:
-        // less than 24 hours before the class
+    function deleteClass(DeleteClassRequest $request, BookedClass $bookedClass){
         $bookedClass->delete();
         return response('Class canceled', 200);
     }

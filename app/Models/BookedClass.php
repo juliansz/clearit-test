@@ -13,4 +13,12 @@ class BookedClass extends Model
     protected $table = 'classes';
 
     protected $fillable = ['starts_at', 'ends_at', 'classroom_id'];
+
+    protected function casts(): array
+    {
+        return [
+            'starts_at' => 'datetime:Y-m-d H:i:s',
+            'ends_at' => 'datetime:Y-m-d H:i:s',
+        ];
+    }
 }
