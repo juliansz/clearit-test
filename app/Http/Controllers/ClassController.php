@@ -24,11 +24,6 @@ class ClassController extends Controller
     }
 
     function postClass(CreateClassRequest $request){
-        // TODO: things to handle in the request: 
-        // empty fields, formats string / datetimes, 
-        // unexisting classroom 
-        // the classroom should be available during the required slot
-        // validate starts_at and ends_at to be 00:00 and 59:59 respectively???
         $classroom = Classroom::where('name', 'like', $request->input('classroom_name'))->first();
         $data = $request->only('starts_at', 'ends_at');
         $data['classroom_id'] = $classroom->id;
